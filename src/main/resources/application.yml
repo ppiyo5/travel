@@ -1,0 +1,42 @@
+server:
+  port: 8070
+  
+---
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/sample?useSSL=false&allowPublicKeyRetrieval=true
+    username: scott
+    password: 1234
+    
+---
+
+spring:
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+      
+---
+ 
+logging:
+  level:
+     org.hibernate: info
+     
+---
+
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mappers/**/*.xml
+  type-aliases-package: com.sample.info.domain
+    
+---
+
+spring:
+  thymeleaf:
+    cache: false
+
